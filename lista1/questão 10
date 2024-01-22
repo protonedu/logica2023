@@ -1,0 +1,39 @@
+def traduz_sentenca(sentenca):
+  """
+  Traduz uma sentença em linguagem natural para a linguagem da lógica proposicional.
+
+  Args:
+    sentenca: A sentença em linguagem natural.
+
+  Returns:
+    A sentença correspondente na linguagem da lógica proposicional.
+  """
+
+  # Converte a sentença para minúsculas.
+
+  sentenca = sentenca.lower()
+
+  # Define as correspondências entre palavras em linguagem natural e símbolos proposicionais.
+
+  correspondencias = {
+    "é verdadeiro": "M",
+    "é falso": "N",
+    "ou": "∨",
+    "e": "∧",
+    "não": "¬",
+    "se": "→",
+    "então": "↔",
+  }
+
+  # Percorre a sentença, substituindo as palavras pelas correspondências definidas.
+
+  nova_sentenca = ""
+  for palavra in sentenca.split():
+    if palavra in correspondencias:
+      nova_sentenca += correspondencias[palavra]
+    else:
+      nova_sentenca += palavra
+
+  return nova_sentenca
+
+  print(traduz_sentenca(sentenca))
