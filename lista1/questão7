@@ -1,0 +1,209 @@
+negação ( ¬ ), conjunção ( ∧ ) e disjunção ( ∨ ).
+Em Python: 
+Negação ( ¬ ) é feita pelo operador not
+Exemplos: 
+exemplo1 (verificar se um numero é maior que 10):
+numero = 15
+
+if not numero > 10:
+    print("O número é menor ou igual a 10")
+else:
+    print("O número é maior que 10")
+
+exemplo2 (verificar se uma string esta vazia):
+string = ""
+
+if not string:
+    print("A string está vazia")
+else:
+    print("A string não está vazia")
+
+conjunção ( ∧ ) é feita pelo operador e
+Exemplos:
+exemplo1(ver se um numero está entre 10 e 20):
+numero = 15
+
+if numero > 10 and numero < 20:
+    print("O número está entre 10 e 20")
+else:
+    print("O número não está entre 10 e 20")
+
+exemplo2(ver se um usuário está logado e tem permissão para acessar um recurso):
+usuario_logado = True
+permissao_recurso = True
+
+if usuario_logado and permissao_recurso:
+    print("O usuário está logado e tem permissão para acessar o recurso")
+else:
+    print("O usuário não está logado ou não tem permissão para acessar o recurso")
+
+disjunção ( ∨ ) é feita pelo operador ou 
+Exemplos: 
+Exemplo1(verificar se um numero é maior que 10 ou menor que 0):
+numero = 15
+
+if numero > 10 or numero < 0:
+    print("O número é maior que 10 ou menor que 0")
+else:
+    print("O número está entre 0 e 10")
+
+exemplo2(verificar se um usuário é maior de idade ou se é menor de idade e tem autorização dos pais):
+idade = 18
+autorizacao_pais = True
+
+if idade >= 18 or idade < 18 and autorizacao_pais:
+    print("O usuário é maior de idade ou é menor de idade e tem autorização dos pais")
+else:
+    print("O usuário é menor de idade e não tem autorização dos pais")
+como no e
+em C:
+Negação ( ¬ ) é feita pelo operador ! 
+Exemplos:
+Exemplo1(verificar se um numero é maior que 10):
+int numero = 15;
+
+if (!numero > 10) {
+    printf("O número é menor ou igual a 10\n");
+} else {
+    printf("O número é maior que 10\n");
+}
+
+Exemplo2(verificar se a string está vazia):
+
+char *string = "";
+
+if (!string) {
+    printf("A string está vazia\n");
+} else {
+    printf("A string não está vazia\n");
+}
+
+conjunção ( ∧ ) é feita pelo operador &&
+Exemplos:
+Exemplo1(verificar se um número está entre 10 e 20):
+int numero = 15;
+
+if (numero > 10 && numero < 20) {
+    printf("O número está entre 10 e 20\n");
+} else {
+    printf("O número não está entre 10 e 20\n");}
+Exemplo2(ver se um usuário está logado e tem permissão para acessar um recurso):
+int usuario_logado = 1;
+int permissao_recurso = 1;
+
+if (usuario_logado && permissao_recurso) {
+    printf("O usuário está logado e tem permissão para acessar o recurso\n");
+} else {
+    printf("O usuário não está logado ou não tem permissão para acessar o recurso\n");
+}
+
+disjunção ( ∨ ) é feita pelo operador ||
+Exemplos:
+Exemplo1(verificar se um numero é maior que 10 ou menor que 0):
+int numero = 15;
+
+if (numero > 10 || numero < 0) {
+    printf("O número é maior que 10 ou menor que 0\n");
+} else {
+    printf("O número está entre 0 e 10\n");
+}
+
+Exemplo2(verificar se um usuário é maior de idade ou se é menor de idade e tem autorização dos pais):
+int idade = 18;
+int autorizacao_pais = 1;
+
+if (idade >= 18 || idade < 18 && autorizacao_pais) {
+    printf("O usuário é maior de idade ou é menor de idade e tem autorização dos pais\n");
+} else {
+    printf("O usuário é menor de idade e não tem autorização dos pais\n");
+} 
+
+Em JAVA:
+Negação ( ¬ ) é feita pelo operador ! 
+Exemplos:
+Exemplo1(invertendo valor inicializado com 10):
+public class Exemplo1 {
+
+  public static void main(String[] args) {
+    int numero = 10;
+
+    // Verifica se o número é menor ou igual a zero.
+    boolean menorOuIgual = numero <= 0;
+
+    // Usa o operador !? para inverter o valor da variável.
+    boolean maiorQueZero = !menorOuIgual;
+
+    System.out.println(maiorQueZero); // Imprime "true"
+  }
+}
+ Exemplo2(invertendo o valor vazio da string):
+public class Exemplo2 {
+
+  public static void main(String[] args) {
+    String texto = "Olá, mundo!";
+
+    // Verifica se o texto é vazio.
+    boolean vazio = texto.isEmpty();
+
+    // Usa o operador !? para inverter o valor da variável.
+    boolean naoVazio = !vazio;
+
+    System.out.println(naoVazio); // Imprime "true"
+  }
+}
+
+Conjunção ( ∧ ) é feita pelo operador &&
+Exemplos:
+Exemplo1(verificar se um numero e maior que 10):
+public class Exemplo1 {
+
+  public static void main(String[] args) {
+    int numero1 = 10;
+    int numero2 = 20;
+
+    // Verifica se ambos os números são maiores que zero.
+    boolean ambosMaioresQueZero = numero1 > 0 && numero2 > 0;
+
+    System.out.println(ambosMaioresQueZero); // Imprime "true"
+  }
+}
+Exemplo2(verificar se ambos os texto são iguais):
+public class Exemplo2 {
+
+  public static void main(String[] args) {
+    String texto1 = "Olá, mundo!";
+    String texto2 = "Adeus, mundo!";
+
+    // Verifica se ambos os textos são iguais.
+    boolean textosIguais = texto1.equals(texto2);
+
+    System.out.println(textosIguais); // Imprime "false"
+  }
+}
+
+Disjunção ( ∨ ) é feita pelo operador ||
+Exemplos:
+Exemplo1(verifica se o numero é maior que zero ou menor que 10):
+public class Exemplo1 {
+
+  public static void main(String[] args) {
+    int numero = 10;
+
+    // Verifica se o número é maior que zero ou menor que 10.
+    boolean maiorQueZeroOuMenorQueDez = numero > 0 || numero < 10;
+
+    System.out.println(maiorQueZeroOuMenorQueDez); // Imprime "true"
+  }
+}
+Exemplo2(verificar se o texto é igual):
+public class Exemplo2 {
+
+  public static void main(String[] args) {
+    String texto = "Olá, mundo!";
+
+    // Verifica se o texto é vazio ou igual a "Olá, mundo!".
+    boolean textoNaoVazioOuIgualOláMundo = texto.isEmpty() || texto.equals("Olá, mundo!");
+
+    System.out.println(textoNaoVazioOuIgualOláMundo); // Imprime "true"
+  }
+}
