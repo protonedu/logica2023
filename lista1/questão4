@@ -1,0 +1,41 @@
+Letra a) (P → Q) ∧ (¬P → R)
+É satisfatível, pela tabela verdade
+P	Q	R	(P → Q) ∧ (¬P → R)
+0	0	0	        0
+0	0	1	        1
+0	1	0	        0
+0	1	1	        1
+1	0	0	        0
+1	0	1	        0
+1	1	0	        1
+1	1	1	        1
+
+
+Letra b) P ∧ ¬P  ∧  Q
+É uma contradição, pois possui um termo e sua negação logo será sempre falso.
+
+Letra c) (¬(P V Q) ∨ ¬P) ∧ P
+É uma contradição, pois pela tabela verdade
+P	Q	(¬(P V Q) ∨ ¬P) ∧ P
+0	0	        0
+0	1	        0
+1	0	        0
+1	1	        0
+ 
+Letra d) Q → (P ∧ ¬ Q)
+É satisfatível, pela tabela verdade
+P	Q	Q → (P ∧ ¬ Q)
+0	0	    1
+0	1	    1
+1	0	    0
+1	1	    0
+
+Letra e) (P ∧ Q ) ↔ (¬P ∨ Q )
+É satisfatível, pela tabela verdade
+P	Q	(P ∧ Q ) ↔ (¬P ∨ Q )
+0	0	         0
+0	1	         0
+1	0	         1
+1	1	         1
+
+
