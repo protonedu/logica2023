@@ -1,0 +1,36 @@
+Letra a) P ∨ Q e ¬(P ∧ ¬Q) 
+Não são equivalentes, pois pela tabela verdade
+P	Q	P ∨ Q 	¬(P ∧ ¬Q)
+0	0  	0	        1
+0	1	  1	        1
+1	0	  1	        0
+1	1	  1	        1
+
+Letra b) P → Q e ¬Q → ¬P
+São equivalentes, pois pela tabela verdade
+P	Q	P → Q 	¬Q → ¬P
+0	0	  1	       1
+0	1	  1	       1
+1	0	  0	       0
+1	1	  1	       1
+
+Letra c) P ∧ Q e Q ∧ P
+São equivalentes, pois pela tabela verdade
+P	Q	P ∧ Q 	Q ∧ P
+0	0	  0      	0
+0	1  	0	      0
+1	0	  0      	0
+1	1	  1      	1
+
+Letra d) (P → Q) ∧ (Q → R) e P → R
+Não são equivalentes, pois pela tabela verdade
+P	Q	R	(P → Q) ∧ (Q → R) 	 P → R
+0	0	0	        1	             1
+0	0	1	        0	             1
+0	1	0	        0            	 1
+0	1	1	        1              1
+1	0	0	        0	             0
+1	0	1	        0	             1
+1	1	0	        0	             0
+1	1	1	        1	             1
+
