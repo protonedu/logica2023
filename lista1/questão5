@@ -1,0 +1,70 @@
+def avalia_sentencas(sentenca):
+  """
+  Avalia a semântica de uma sentença.
+
+  Args:
+    sentenca: A sentença.
+
+  Returns:
+    Uma string com a classificação da sentença.
+  """
+
+  # Converte a sentença para uma tabela-verdade.
+
+  tabela = tabela_verdade(sentenca)
+
+  # Verifica se a sentença é uma tautologia.
+
+  if tabela.count(True) == len(tabela):
+    return "Tautologia"
+
+  # Verifica se a sentença é uma contradição.
+
+  if tabela.count(False) == len(tabela):
+    return "Contradição"
+
+  # Verifica se a sentença é satisfatível.
+
+  for linha in tabela:
+    if True in linha:
+      return "Satisfatível"
+
+  return "Contradição"
+
+
+def tabela_verdade(sentenca):
+  """
+  Gera a tabela-verdade de uma sentença.
+
+  Args:
+    sentenca: A sentença.
+
+  Returns:
+    Uma tabela-verdade com uma linha para cada combinação de valores de verdade
+    das proposições da sentença.
+  """
+
+  # Gera uma lista com as proposições da sentença.
+
+  proposicoes = sentenca.split(" → ")
+
+  # Gera uma tabela-verdade com uma linha para cada combinação de valores de verdade
+  # das proposições.
+
+  tabela = []
+  for valores in itertools.product([True, False], repeat=len(proposicoes)):
+    linha = []
+    for valor in valores:
+      linha.append(valor)
+    tabela.append(linha)
+
+  # Gera as colunas da tabela-verdade.
+
+  for coluna in range(len(tabela[0])):
+    for linha in range(len(tabela)):
+      tabela[linha][coluna] = proposicoes[coluna] == tabela[linha][coluna]
+
+  return tabela
+
+
+  print(avalia_sentencas(sentenca))
