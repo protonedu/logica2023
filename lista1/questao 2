@@ -60,9 +60,6 @@ def tabela_verdade(sentenca):
   return tabela
 
 
-if __name__ == "__main__":
-  sentenca1 = "(P → Q) ∧ (Q → R)"
-  sentenca2 = "P → R"
 
   if checa_equivalencia(sentenca1, sentenca2):
     print("As sentenças são logicamente equivalentes.")
