@@ -1,1 +1,70 @@
-cont
+def checa_equivalencia(sentenca1, sentenca2):
+  """
+  Verifica se duas sentenças são logicamente equivalentes.
+
+  Args:
+    sentenca1: A primeira sentença.
+    sentenca2: A segunda sentença.
+
+  Returns:
+    True se as sentenças são logicamente equivalentes, False caso contrário.
+  """
+
+  # Converte as sentenças para tabelas-verdade.
+
+  tabela1 = tabela_verdade(sentenca1)
+  tabela2 = tabela_verdade(sentenca2)
+
+  # Verifica se as tabelas-verdade são iguais.
+
+  for linha in range(len(tabela1)):
+    for coluna in range(len(tabela1[0])):
+      if tabela1[linha][coluna] != tabela2[linha][coluna]:
+        return False
+
+  return True
+
+
+def tabela_verdade(sentenca):
+  """
+  Gera a tabela-verdade de uma sentença.
+
+  Args:
+    sentenca: A sentença.
+
+  Returns:
+    Uma tabela-verdade com uma linha para cada combinação de valores de verdade
+    das proposições da sentença.
+  """
+
+  # Gera uma lista com as proposições da sentença.
+
+  proposicoes = sentenca.split(" → ")
+
+  # Gera uma tabela-verdade com uma linha para cada combinação de valores de verdade
+  # das proposições.
+
+  tabela = []
+  for valores in itertools.product([True, False], repeat=len(proposicoes)):
+    linha = []
+    for valor in valores:
+      linha.append(valor)
+    tabela.append(linha)
+
+  # Gera as colunas da tabela-verdade.
+
+  for coluna in range(len(tabela[0])):
+    for linha in range(len(tabela)):
+      tabela[linha][coluna] = proposicoes[coluna] == tabela[linha][coluna]
+
+  return tabela
+
+
+if __name__ == "__main__":
+  sentenca1 = "(P → Q) ∧ (Q → R)"
+  sentenca2 = "P → R"
+
+  if checa_equivalencia(sentenca1, sentenca2):
+    print("As sentenças são logicamente equivalentes.")
+  else:
+    print("As sentenças não são logicamente equivalentes.")
