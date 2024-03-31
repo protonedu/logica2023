@@ -1,0 +1,128 @@
+//inicialmente foi pesquisado no gemini:
+como eu crio um programa em phyton que recebra um sentença em linguagem natural e ira redirecionar a pergunta para alguma LLM como o gemini que ira receber a sentença e traduzir para uma linguagem baseada em logica proposicional e verificar se a sentença é valida segundo a leis da logica proposicional ? 
+//porem as respostas desse LLM não foram satisfatorias, pois ele estava apenas dando codigos para criar um tradutor para logica e não falou nenhuma dica de como encaminhar para algum LLM.
+//abaixo se encontra o codigo gerado pelo LLM, mesmo não sendo oq foi pedido o codigo possui uma logica funcinal:
+
+from nltk.tokenize import word_tokenize
+from nltk.corpus import wordnet as wn
+
+# Dicionário de conectivos e suas precedências
+conectivos = {
+    "e": 2,
+    "ou": 1,
+    "se": 3,
+    "entao": 3,
+    "nao": 4
+}
+
+# Função para converter frase para Lógica Proposicional
+def para_logica_proposicional(frase):
+    tokens = word_tokenize(frase)
+    proposicoes = []
+    for token in tokens:
+        # Verifica se token é um conectivo
+        if token in conectivos:
+            proposicoes.append(token)
+        else:
+            # Converte para sinônimo mais simples
+            sinonimo = wn.synsets(token)[0].lemmas()[0].name()
+            proposicoes.append(sinonimo)
+
+    # Constrói a fórmula proposicional
+    formula = ""
+    for i in range(len(proposicoes)):
+        if i > 0:
+            anterior = proposicoes[i - 1]
+            atual = proposicoes[i]
+            if conectivos[anterior] >= conectivos[atual]:
+                formula += "(" + formula + ")"
+            formula += " " + conectivos[atual] + " "
+        formula += proposicoes[i]
+    return formula
+
+# Função para verificar validade da fórmula
+def valida_formula(formula):
+    # TODO: Implementar a lógica de validação da fórmula proposicional
+    # (por exemplo, usando o módulo pycoSAT)
+    return True
+
+# Exemplo de uso
+frase = "Se chover, então o jogo será cancelado."
+formula = para_logica_proposicional(frase)
+
+print(f"Frase em Lógica Proposicional: {formula}")
+
+if valida_formula(formula):
+    print("A frase é válida segundo a lógica proposicional.")
+else:
+    print("A frase é inválida segundo a lógica proposicional.")
+
+// nessa etapa foi pedido para o chatGPT formas de implementar um codigo em python que recebe sentenças em linguagem natural e envie para dois LLM´s e compare:
+//um codigo funcional porem é necessario as api´s tanto do chatGPT quanto do Gemini.
+import openai
+import requests
+
+# Configuração das chaves API
+openai.api_key = 'sua_chave_api_openai'
+gemini_api_key = 'sua_chave_api_gemini'
+
+# Função para enviar a sentença para o ChatGPT
+def obter_resposta_chatgpt(sentenca):
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=sentenca,
+        max_tokens=50
+    )
+    return response.choices[0].text.strip()
+
+# Função para enviar a sentença para o Gemini
+def obter_resposta_gemini(sentenca):
+    headers = {
+        'Authorization': 'Bearer {}'.format(gemini_api_key),
+        'Content-Type': 'application/json',
+    }
+    data = {
+        'text': sentenca,
+    }
+    response = requests.post('https://api.openai.com/v1/engines/gemini/completions', headers=headers, json=data)
+    return response.json()['choices'][0]['text'].strip()
+
+# Função para traduzir a resposta em lógica proposicional
+def traduzir_para_logica(sentenca):
+    # Aqui você deve implementar a lógica de tradução
+    # Este é um exemplo simples
+    traducao = sentenca.replace("e", " & ").replace("ou", " | ").replace("não", "~")
+    return traducao
+
+# Função para verificar a validade da sentença em lógica proposicional
+def verificar_validade(sentenca_logica):
+    # Implemente a lógica de verificação de validade aqui
+    # Use uma biblioteca como sympy ou implemente suas próprias regras de verificação
+    pass
+
+# Receber a sentença em linguagem natural
+sentenca = input("Digite a sentença em linguagem natural: ")
+
+# Obter respostas dos modelos de linguagem
+resposta_chatgpt = obter_resposta_chatgpt(sentenca)
+resposta_gemini = obter_resposta_gemini(sentenca)
+
+# Traduzir respostas para lógica proposicional
+sentenca_logica_chatgpt = traduzir_para_logica(resposta_chatgpt)
+sentenca_logica_gemini = traduzir_para_logica(resposta_gemini)
+
+# Verificar validade das sentenças em lógica proposicional
+validade_chatgpt = verificar_validade(sentenca_logica_chatgpt)
+validade_gemini = verificar_validade(sentenca_logica_gemini)
+
+# Comparar as respostas dos modelos
+print("Resposta do ChatGPT:", resposta_chatgpt)
+print("Resposta do Gemini:", resposta_gemini)
+
+# Comparar a validade das sentenças em lógica proposicional
+if validade_chatgpt == validade_gemini:
+    print("As respostas têm a mesma validade em lógica proposicional.")
+elif validade_chatgpt:
+    print("A resposta do ChatGPT é válida em lógica proposicional, mas a do Gemini não é.")
+else:
+    print("A resposta do Gemini é válida em lógica proposicional, mas a do ChatGPT não é.")
